@@ -49,7 +49,7 @@ public class Character2D : MonoBehaviour
         rb2D.velocity -= ComponentX == 0f ? ground.normal : Vector2.zero;
     }
 
-    private void Update()
+    protected void Update()
     {
         FlipX();
     }
@@ -83,6 +83,14 @@ public class Character2D : MonoBehaviour
         get
         {
             return Controls.Btn_Jump;
+        }
+    }
+
+    protected bool Btn_Submit
+    {
+        get
+        {
+            return Controls.Btn_Submit;
         }
     }
 }

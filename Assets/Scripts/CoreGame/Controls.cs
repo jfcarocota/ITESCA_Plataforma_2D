@@ -3,12 +3,17 @@ using UnityEngine;
 
 namespace CoreGame
 {
+    namespace MyNamespaces { }
+
     namespace PlayerController
     {
         public class Controls
         {
             public Controls() { }
 
+            /// <summary>
+            /// Sirve como la variable de eje X y Y de la input del teclado o joystick.
+            /// </summary>
             public static Vector2 Axis
             {
                 get
@@ -38,6 +43,14 @@ namespace CoreGame
                 get
                 {
                     return Input.GetButton("Crouch");
+                }
+            }
+
+            public static bool Btn_Submit
+            {
+                get
+                {
+                    return Input.GetButtonDown("Submit");
                 }
             }
         }

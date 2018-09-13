@@ -1,9 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CoreGame.MemorySystem;
 
 public class Player : Character2D
 {
+
+    new void Update()
+    {
+        base.Update();
+        if (Btn_Submit)
+        {
+            GameData gd = MemorySystem.LoadData("MyCoolGame.data");
+            transform.position = gd.PosVector;
+        }
+    }
+
     protected override void Move2D()
     {
         base.Move2D();
@@ -18,5 +30,10 @@ public class Player : Character2D
             anim.SetTrigger("Jump");
         }
         anim.SetBool("Ground", ground);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        MemorySystem.Save(new GameData(transform.position.x, transform.position.y), "MyCoolGame.data");
     }
 }
